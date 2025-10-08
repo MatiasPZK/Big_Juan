@@ -4,30 +4,24 @@ import sys
 import time
 import os
 
-# Inicializar pygame
 pygame.init()
 
-# Configuración general
 ANCHO, ALTO = 800, 500
 ventana = pygame.display.set_mode((ANCHO, ALTO))
-pygame.display.set_caption("🎰 Big Juan Deluxe 🎰")
+pygame.display.set_caption("🎰 Big Juan | EsimBET 🎰")
 
-# Colores
 NEGRO = (0, 0, 0)
 BLANCO = (255, 255, 255)
 VERDE = (0, 255, 0)
 ROJO = (255, 0, 0)
 AMARILLO = (255, 255, 0)
 
-# Fuente
 fuente = pygame.font.Font(None, 50)
 fuente_peque = pygame.font.Font(None, 30)
 
-# Carpeta de assets
 BASE_DIR = os.path.dirname(__file__)
 ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
-# Cargar imágenes
 imagenes = [
     pygame.image.load(os.path.join(ASSETS_DIR, "frutas", "chilli.png")),
     pygame.image.load(os.path.join(ASSETS_DIR, "frutas", "dog.png")),
@@ -38,15 +32,12 @@ imagenes = [
     pygame.image.load(os.path.join(ASSETS_DIR, "frutas", "Q_icon.png")),
 ]
 
-# Redimensionar imágenes
 imagenes = [pygame.transform.scale(img, (100, 100)) for img in imagenes]
 
-# Fondo
 bg_path = os.path.join(ASSETS_DIR, "bg.png")
 fondo = pygame.image.load(bg_path)
 fondo = pygame.transform.scale(fondo, (ANCHO, ALTO))
 
-# Sonidos
 try:
     spin_sound = pygame.mixer.Sound(os.path.join(ASSETS_DIR, "sounds", "spin.mp3"))
     win_sound = pygame.mixer.Sound(os.path.join(ASSETS_DIR, "sounds", "win.mp3"))
@@ -54,10 +45,8 @@ except:
     spin_sound = None
     win_sound = None
 
-# Puntos iniciales
 puntos = 10
 
-# Reloj
 reloj = pygame.time.Clock()
 
 def mostrar_texto(texto, color, y, tamaño=50):
@@ -107,7 +96,6 @@ def main():
                 x = 250 + i * 120
                 ventana.blit(img, (x, 200))
 
-            # Reglas de puntos
             if resultado[0] == resultado[1] == resultado[2]:
                 puntos += 10
                 mostrar_texto("💥 JACKPOT +10 💥", VERDE, 100)
@@ -124,7 +112,6 @@ def main():
             time.sleep(1.5)
             jugando = False
 
-            # Si se queda sin puntos
             if puntos <= 0:
                 ventana.blit(fondo, (0, 0))
                 mostrar_texto("❌ Le debes al FMI ❌", ROJO, ALTO // 2)
