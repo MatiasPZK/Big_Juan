@@ -86,7 +86,7 @@ def main():
     while corriendo:
         ventana.blit(fondo, (0, 0))
         mostrar_texto("BIG JUAN DELUXE", AMARILLO, 60)
-        mostrar_texto(f"Puntos: {puntos}", BLANCO, 120, 30)
+        mostrar_texto(f"Plata: {puntos}$", BLANCO, 120, 30)
         mostrar_texto("Presioná ESPACIO para girar", VERDE, 420, 30)
         mostrar_texto("ESC para salir", ROJO, 460, 25)
 
@@ -117,7 +117,7 @@ def main():
                 mostrar_texto("✨ Ganaste +3 ✨", BLANCO, 100)
             else:
                 puntos -= 2
-                mostrar_texto("😢 Nada esta vez... -2", ROJO, 100)
+                mostrar_texto("😢 Jaja, no sacaste nada -2", ROJO, 100)
 
             mostrar_texto(f"Puntos: {puntos}", BLANCO, 350, 30)
             pygame.display.flip()
@@ -127,7 +127,7 @@ def main():
             # Si se queda sin puntos
             if puntos <= 0:
                 ventana.blit(fondo, (0, 0))
-                mostrar_texto("❌ SIN PUNTOS ❌", ROJO, ALTO // 2)
+                mostrar_texto("❌ Le debes al FMI ❌", ROJO, ALTO // 2)
                 mostrar_texto("R para reiniciar o ESC para salir", AMARILLO, ALTO // 2 + 50, 30)
                 pygame.display.flip()
                 esperando = True
