@@ -45,7 +45,7 @@ except:
     spin_sound = None
     win_sound = None
 
-puntos = 10
+plata = 10
 
 reloj = pygame.time.Clock()
 
@@ -68,14 +68,14 @@ def animar_giro():
         pygame.time.wait(170)
 
 def main():
-    global puntos
+    global plata
     corriendo = True
     jugando = False
 
     while corriendo:
         ventana.blit(fondo, (0, 0))
         mostrar_texto("BIG JUAN | EsimBET", AMARILLO, 60)
-        mostrar_texto(f"Plata: {puntos}$", BLANCO, 120, 30)
+        mostrar_texto(f"plata: {plata}$", BLANCO, 120, 30)
         mostrar_texto("Presioná ESPACIO para girar", VERDE, 420, 30)
         mostrar_texto("ESC para salir", ROJO, 460, 25)
 
@@ -97,22 +97,22 @@ def main():
                 ventana.blit(img, (x, 200))
 
             if resultado[0] == resultado[1] == resultado[2]:
-                puntos += 10
+                plata += 10
                 mostrar_texto("💥 JACKPOT +10 💥", VERDE, 100)
                 if win_sound: win_sound.play()
             elif resultado[0] == resultado[1] or resultado[1] == resultado[2] or resultado[0] == resultado[2]:
-                puntos += 3
+                plata += 3
                 mostrar_texto("✨ Ganaste +3 ✨", BLANCO, 100)
             else:
-                puntos -= 2
+                plata -= 2
                 mostrar_texto("😢 Jaja, no sacaste nada -2", ROJO, 100)
 
-            mostrar_texto(f"Puntos: {puntos}", BLANCO, 350, 30)
+            mostrar_texto(f"plata: {plata}", BLANCO, 350, 30)
             pygame.display.flip()
             time.sleep(1.5)
             jugando = False
 
-            if puntos <= 0:
+            if plata <= 0:
                 ventana.blit(fondo, (0, 0))
                 mostrar_texto("❌ Le debes al FMI ❌", ROJO, ALTO // 2)
                 mostrar_texto("R para reiniciar o ESC para salir", AMARILLO, ALTO // 2 + 50, 30)
@@ -128,7 +128,7 @@ def main():
                                 pygame.quit()
                                 sys.exit()
                             if event.key == pygame.K_r:
-                                puntos = 10
+                                plata = 10
                                 esperando = False
 
         pygame.display.flip()
