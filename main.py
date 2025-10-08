@@ -74,7 +74,7 @@ def main():
 
     while corriendo:
         ventana.blit(fondo, (0, 0))
-        mostrar_texto("BIG JUAN DELUXE", AMARILLO, 60)
+        mostrar_texto("BIG JUAN | EsimBET", AMARILLO, 60)
         mostrar_texto(f"Plata: {puntos}$", BLANCO, 120, 30)
         mostrar_texto("Presioná ESPACIO para girar", VERDE, 420, 30)
         mostrar_texto("ESC para salir", ROJO, 460, 25)
